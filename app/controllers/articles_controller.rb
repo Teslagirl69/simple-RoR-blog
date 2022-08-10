@@ -1,8 +1,6 @@
 class ArticlesController < ApplicationController
 before_action :authenticate_user!, :only => [:new, :create]
 
-
-
   def index
   @articles = Article.all
 
@@ -10,6 +8,7 @@ before_action :authenticate_user!, :only => [:new, :create]
 
 
   def new
+  @article = Article.new
 
   end
 
@@ -38,8 +37,10 @@ def update
 
       if @article.valid?
       @article.update(article_params)
+       flash[:notice] = "Article was updated"
       redirect_to @article
     else
+         flash[:notice] = "Article was not updated"
       render action: 'edit'
     end
   end
