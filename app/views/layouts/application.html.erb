@@ -11,15 +11,16 @@
   </head>
 
   <body>
-    <header>
-    <%= render partial: "/layouts/navigation" %>
-    </header>
 
-<% flash.each do |name, msg| %>
-    <ul>
-     <li><%= msg %></li>
-    </ul>
-<% end %>
+    <%= render partial: "/layouts/navigation" %>
+
+
+ <% flash.each do |name, msg| %>
+        <ul>
+         <li><%= msg %></li>
+        </ul>
+    <% end %>
+    <%= yield %>
 
    <% if user_signed_in? %>
 
@@ -34,7 +35,6 @@ data: {"turbo-method": :delete } %>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
-    <%= yield %>
   </body>
 </html>
 
