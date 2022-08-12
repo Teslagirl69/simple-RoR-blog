@@ -2,19 +2,57 @@
 <%= link_to 'Back', articles_path %>
 
 <%= link_to "Edit", edit_article_path(@article) %>
-<h1>Showing selected article</h1>
-<h1> <%= @article.title %> </h1>
-<p>
-<%= simple_format(@article.text) %>
-</p>
+<div class="container">
+    <div class="small-box mx-auto text-center">
 
-<h2> Comments </h2>
-<% @article.comments.each do |comment| %>
-<p>
-<i><%= comment.author %> said: </i>  <br />
-<i><%= comment.body %> </i>  <br />
-<p>
-<% end %>
+<div class="card">
+  <div class="card-header">
+     <h4><strong> Showing selected article</strong></h4>
+
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @article.title %></h5>
+    <p class="card-text"><%= @article.text %></p>
+   </div>
+</div>
+</br>
+</br>
+</br>
+
+
+
+
+   <h2> Comments: </h2>
+
+<div class="card-group">
+    <% @article.comments.each do |comment| %>
+   <div class="card">
+
+
+       <div class="card-body">
+      <h5 class="card-title">Comment by <%= comment.author %></h5>
+      <p class="card-text"><%= comment.body %></p>
+
+    </div>
+
+  </div>
+ <% end %>
+  </div>
+
+
+
+
+</br>
+</br>
+</br>
+
+
+
+<div class="card">
+
+
+
+
 
 <h2> Add comment </h2>
 
@@ -37,3 +75,5 @@
 <% end %>
 
 </p>
+
+</div>
