@@ -23,7 +23,7 @@
 }
 
 
-$navbar-default-bg: black;
+$navbar-light-color:                rgba($black, .55);
 
 @import "bootstrap";
 #logo {
@@ -35,7 +35,7 @@ $navbar-default-bg: black;
  font-weight: bold;
 }
 #logo:hover {
- color: #fff;
+ color: #6f42c1;
  text-decoration: none;
 }
 .article-actions {
