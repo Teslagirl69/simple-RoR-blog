@@ -5,6 +5,9 @@ class Article < ApplicationRecord
   validates :text, presence: true
 
   def subject
-    title
+   title
+  end
+  def last_comment
+   comments.last
   end
 end
