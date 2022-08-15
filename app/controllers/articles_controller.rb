@@ -17,6 +17,7 @@ before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :des
 
   def create
    @article = Article.new(article_params)
+    @article.user = current_user
      if @article.valid?
       @article.save
       redirect_to @article
