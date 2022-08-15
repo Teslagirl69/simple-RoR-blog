@@ -1,12 +1,10 @@
 class Article < ApplicationRecord
-has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  belongs_to :user, optional: true
+  validates :title, presence: true
+  validates :text, presence: true
 
-belongs_to :user, optional: true
-
-validates :title, presence: true
-validates :text, presence: true
-
-def subject
-title
-end
+  def subject
+    title
+  end
 end
