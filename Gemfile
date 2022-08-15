@@ -79,3 +79,4 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'capybara'
 end
+gem 'rexml'
