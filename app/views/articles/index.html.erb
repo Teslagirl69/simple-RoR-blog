@@ -1,4 +1,8 @@
+
 <h1 align="center">List of articles</h1>
+<div align="center">
+<%= paginate @articles %>
+</div>
 <% @articles.each do |article| %>
 <div class="card">
   <div class="card-header">

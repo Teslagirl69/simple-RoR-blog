@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
   validates :text, presence: true
-
+  paginates_per 5
   def subject
     title
   end
