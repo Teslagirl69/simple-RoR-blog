@@ -2,13 +2,10 @@ class ArticlesController < ApplicationController
 before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
   def index
   @articles = Article.all
-
   end
-
 
   def new
   @article = Article.new
-
   end
 
   def show
