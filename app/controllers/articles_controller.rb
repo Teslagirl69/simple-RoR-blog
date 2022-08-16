@@ -34,10 +34,10 @@ def update
 
       if @article.valid?
       @article.update(article_params)
-       flash[:notice] = "Article was updated"
+       flash[:success] = "Article was updated"
       redirect_to @article
     else
-         flash[:notice] = "Article was not updated"
+         flash[:success] = "Article was not updated"
       render action: 'edit'
     end
   end
