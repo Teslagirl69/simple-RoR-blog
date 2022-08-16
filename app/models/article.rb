@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
@@ -5,9 +7,10 @@ class Article < ApplicationRecord
   validates :text, presence: true
 
   def subject
-   title
+    title
   end
+
   def last_comment
-   comments.last
+    comments.last
   end
 end
