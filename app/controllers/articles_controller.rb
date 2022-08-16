@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   def index
-  @articles = Article.all
+    @articles = Article.all
   end
 
   def new
-  @article = Article.new
+    @article = Article.new
   end
 
   def show
@@ -13,49 +15,42 @@ before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :des
   end
 
   def create
-   @article = Article.new(article_params)
+    @article = Article.new(article_params)
     @article.user = current_user
-     if @article.valid?
+    if @article.valid?
       @article.save
       redirect_to @article
     else
       render action: 'new'
     end
-
   end
 
-
-def edit
+  def edit
     @article = Article.find(params[:id])
   end
 
-def update
-    @article = Article.find(params[:id]) #получаем саму статью
+  def update
+    @article = Article.find(params[:id]) # получаем саму статью
 
-      if @article.valid?
+    if @article.valid?
       @article.update(article_params)
-       flash[:success] = "Article was updated"
+      flash[:success] = 'Article was updated'
       redirect_to @article
     else
-         flash[:success] = "Article was not updated"
+      flash[:success] = 'Article was not updated'
       render action: 'edit'
     end
   end
 
-
-
-def destroy
+  def destroy
     @article = Article.find(params[:id])
     @article.destroy
-     redirect_to articles_path
+    redirect_to articles_path
   end
 
+  private
 
-private
-def article_params
-params.require(:article).permit(:title, :text)
+  def article_params
+    params.require(:article).permit(:title, :text)
+  end
 end
-end
-
-
-
