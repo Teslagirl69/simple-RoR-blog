@@ -1,17 +1,26 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   Exclude:
-    - config/initializers/secret_token.rb
-    - bin
-    - config
-    Rails:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+
+Rails:
   Enabled: true
+
 Metrics/LineLength:
   Max: 120
-  Style/FrozenStringLiteralComment:
+
+Style/FrozenStringLiteralComment:
   Enabled: false
+
 Style/Documentation:
   Enabled: false
-  Metrics/MethodLength:
+
+Metrics/MethodLength:
   Max: 30
 
