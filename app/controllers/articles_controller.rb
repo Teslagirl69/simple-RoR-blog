@@ -2,7 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :is_author?, only: [:edit, :update, :destroy]
+  before_action :is_author?, only: %i[edit update destroy]
 
   def index
     @articles = Article.order(:created_at).page params[:page]
@@ -50,9 +50,9 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
- def is_author?
+  def is_author?
     @article = Article.find(params[:id])
-    redirect_to articles_path unless  @article.user_id == current_user.id
+    redirect_to articles_path unless @article.user_id == current_user.id
   end
 
   private

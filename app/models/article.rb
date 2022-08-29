@@ -13,4 +13,4 @@ class Article < ApplicationRecord
   def last_comment
     comments.last
   end
-  end
+end
