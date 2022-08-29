@@ -1,0 +1,17 @@
+
+AllCops:
+  Exclude:
+    - config/initializers/secret_token.rb
+    - bin
+    - config
+    Rails:
+  Enabled: true
+Metrics/LineLength:
+  Max: 120
+  Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+  Metrics/MethodLength:
+  Max: 30
+
