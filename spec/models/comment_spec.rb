@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 describe Comment do
-  it {should belong_to :article}
+  it { is_expected.to belong_to :article }
 end
