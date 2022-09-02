@@ -5,22 +5,20 @@ require:
 
 AllCops:
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
+    - 'db/schema'
+    - 'config/routes'
     - 'bin/**/*'
 
-Rails:
-  Enabled: true
 
 Metrics/LineLength:
   Max: 120
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 20
 
