@@ -22,3 +22,5 @@ Style/Documentation:
 Metrics/MethodLength:
   Max: 20
 
+Layout/LineLength:
+  Max: 20
