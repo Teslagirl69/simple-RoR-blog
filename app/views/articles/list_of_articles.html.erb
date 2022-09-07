@@ -1,0 +1,26 @@
+PDF generation date:
+<%= Time.zone.now %>
+
+<h1 align="center">List of articles</h1>
+<% @articles.each do |article| %>
+  <div class="card">
+    <div class="card-header">
+      <div class="fw-semibold">
+        <strong>Article Title:</strong>
+        <%= link_to article.title, article_path(article) %>
+      </div>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <strong>Article Content:</strong>
+        <p> <%= truncate(article.text, length: 100) %></p>
+        <footer class="blockquote-footer">Posted by <cite title="Source Title"><%= article.user.username %></cite></footer>
+      </blockquote>
+    </div>
+  </div>
+<% end %>
+</br>
+<div align="center">
+  <%= paginate @articles, window: 2%>
+</div>
+</br>
