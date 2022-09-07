@@ -13,7 +13,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+     @article = Article.find(params[:id])
+       respond_to do |format|
+            format.html
+            format.pdf do
+              render pdf: "Article id: #{@article.id}", template: "articles/article", formats: [:html]
+            end
+       end
   end
 
   def create
