@@ -1,0 +1,27 @@
+PDF generation date:
+<%= Time.zone.now %>
+<p>
+  <strong>Article ID:</strong>
+  <%=  @article.id %>
+</p>
+<p>
+  <strong>Article title:</strong>
+  <%=  @article.title %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%=  simple_format(@article.text) %>
+</p>
+
+<strong> Comments: </strong>
+<h3><%= 'No Comments' if @article.comments.empty? %></h2>
+  <div class="card-group">
+    <% @article.comments.each do |comment| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Comment by <%= comment.author %></h5>
+          <p class="card-text"><%= comment.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
