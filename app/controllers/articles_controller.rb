@@ -6,6 +6,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.order(:created_at).page params[:page]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "List of #{@articles.count} articles", template: "articles/list_of_articles", formats: [:html]
+      end
+    end
   end
 
   def new
