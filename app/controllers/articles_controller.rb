@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require "pry"
+
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :is_author?, only: %i[edit update destroy]
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
         render index: @articles
       end
       format.pdf do
-        render pdf: "List of #{@articles.count} articles", template: "articles/list_of_articles", formats: [:html]
+        render pdf: "List of #{@articles.count} articles", template: 'articles/list_of_articles', formats: [:html]
       end
     end
   end
@@ -23,17 +23,17 @@ class ArticlesController < ApplicationController
   end
 
   def show
-     @article = Article.find(params[:id])
-       respond_to do |format|
-            format.html
-            format.json
-            format.xml do
-              render show: @article
-             end
-            format.pdf do
-              render pdf: "Article id: #{@article.id}", template: "articles/article", formats: [:html]
-            end
-       end
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml do
+        render show: @article
+      end
+      format.pdf do
+        render pdf: "Article id: #{@article.id}", template: 'articles/article', formats: [:html]
+      end
+    end
   end
 
   def create
