@@ -1,9 +1,9 @@
 # frozen_string_literal: true
-
+require "pry"
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :is_author?, only: %i[edit update destroy]
-
+  after_action :log, only: %i[show]
   def index
     @articles = Article.order(:created_at).page params[:page]
     respond_to do |format|
@@ -79,5 +79,16 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :text)
+  end
+
+  def log
+    log_params = {
+      remote_ip: request.remote_ip,
+      request_method: request.method,
+      request_url: request.url,
+      response_status: response.status,
+      response_content_type: response.content_type
+    }
+    Log.create(log_params)
   end
 end
