@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
     @articles = Article.order(:created_at).page params[:page]
     respond_to do |format|
       format.html
+      format.json
+      format.xml do
+        render index: @articles
+      end
       format.pdf do
         render pdf: "List of #{@articles.count} articles", template: "articles/list_of_articles", formats: [:html]
       end
@@ -22,6 +26,10 @@ class ArticlesController < ApplicationController
      @article = Article.find(params[:id])
        respond_to do |format|
             format.html
+            format.json
+            format.xml do
+              render show: @article
+             end
             format.pdf do
               render pdf: "Article id: #{@article.id}", template: "articles/article", formats: [:html]
             end
