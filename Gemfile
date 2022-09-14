@@ -51,6 +51,7 @@ gem 'wkhtmltopdf-binary'
 
 gem 'kaminari'
 
+gem 'oj'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
