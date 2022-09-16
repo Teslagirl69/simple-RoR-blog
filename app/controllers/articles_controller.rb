@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :is_author?, only: %i[edit update destroy]
-  after_action :log, only: %i[show]
+  after_action :log
   def index
     @articles = Article.order(:created_at).page params[:page]
     respond_to do |format|
