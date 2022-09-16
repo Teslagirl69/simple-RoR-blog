@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :is_author?, only: %i[edit update destroy]
-
+  after_action :log
   def index
     @articles = Article.order(:created_at).page params[:page]
     respond_to do |format|
@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
         render index: @articles
       end
       format.pdf do
-        render pdf: "List of #{@articles.count} articles", template: "articles/list_of_articles", formats: [:html]
+        render pdf: "List of #{@articles.count} articles", template: 'articles/list_of_articles', formats: [:html]
       end
     end
   end
@@ -23,17 +23,17 @@ class ArticlesController < ApplicationController
   end
 
   def show
-     @article = Article.find(params[:id])
-       respond_to do |format|
-            format.html
-            format.json
-            format.xml do
-              render show: @article
-             end
-            format.pdf do
-              render pdf: "Article id: #{@article.id}", template: "articles/article", formats: [:html]
-            end
-       end
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.xml do
+        render show: @article
+      end
+      format.pdf do
+        render pdf: "Article id: #{@article.id}", template: 'articles/article', formats: [:html]
+      end
+    end
   end
 
   def create
@@ -79,5 +79,16 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :text)
+  end
+
+  def log
+    log_params = {
+      remote_ip: request.remote_ip,
+      request_method: request.method,
+      request_url: request.url,
+      response_status: response.status,
+      response_content_type: response.content_type
+    }
+    Log.create(log_params)
   end
 end
