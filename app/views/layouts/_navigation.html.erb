@@ -18,8 +18,18 @@
 
          <li class="nav-item">
           <a class="nav-link" href="/contacts">Contacts</a>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/contacts">Contacts</a>
+
       </ul>
-      <ul class="nav justify-content-end">
+
+      <% if @query.present? %>
+        <ul class="navbar-nav">
+         <%= render 'search/form' %>
+        </ul>
+     <% end %>
+      <ul class="nav navbar-nav navbar-right">
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -29,6 +39,8 @@
         <% end %>
         </li>
       </ul>
+
+
     </div>
   </div>
 </nav>

@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  root to: 'home#index'
-  get 'home/index'
+  root to: 'articles#index'
+  get 'articles/index'
   get 'terms' => 'pages#terms'
   get 'about' => 'pages#about'
 
