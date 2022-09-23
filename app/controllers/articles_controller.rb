@@ -3,9 +3,9 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :is_author?, only: %i[edit update destroy]
-  before_action :set_query
+  before_action :set_query, only: %i[index show]
   def set_query
-    @query = Article.ransack(params[:q])
+    @query = Article.ransack(params[:q]) || " "
   end
   def index
     @articles = Article.order(:created_at).page params[:page]
