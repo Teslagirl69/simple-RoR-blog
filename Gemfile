@@ -88,3 +88,5 @@ group :test, :development do
   gem 'shoulda-matchers'
 end
 gem 'rexml'
+
+gem "ransack", "~> 3.2"

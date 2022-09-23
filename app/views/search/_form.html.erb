@@ -1,0 +1,8 @@
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+<%= search_form_for(@query, url: search_path, method: :get, class:'d-flex') do |f| %>
+  <%= f.search_field :title_or_text_cont, placeholder: "Search...", class: "form-control me-2" %>
+  <%= f.submit "Search!", class:"btn btn-outline-success" %>
+<% end %>
+  </div>
+</nav>
